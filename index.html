@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <!--做手机布局时一定要加下面的语句-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS太极图</title>
+    <style>
+        body {
+            background: #eee;
+        }
+
+        * {
+            /*选中所有盒模型并改变改变盒模型的样式*/
+            box-sizing: border-box;
+            padding: 0;
+            /*内边距*/
+            margin: 0;
+            /*外边距*/
+        }
+
+        /*声明关键帧*/
+        @keyframes x {
+
+            /*刚开始转0度*/
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* #bagua 也可以写为 [id=bagua] */
+        #bagua {
+            /* border: 1px solid red; */
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            /*或至少>=边长的一半*/
+            position: relative;
+            overflow: hidden;
+            animation: x 5s infinite linear;
+            /*无限转，线性*/
+            box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.75);
+            /*加一个阴影，表现为悬浮效果*/
+        }
+
+        /*media语法，媒体查询*/
+        /*在宽带小于500px的网站上会自适应以下设置*/
+        @media(max-width:500px) {
+            #bagua {
+                width: 200px;
+                height: 200px;
+            }
+        }
+
+        #bagua>div:first-child {
+            /* border: 10px solid greenyellow; */
+            width: 50%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            background: black;
+        }
+
+        #bagua>div:nth-child(2) {
+            /* border: 10px solid blue; */
+            width: 50%;
+            height: 100%;
+            position: absolute;
+            right: 0;
+            background: white;
+        }
+
+        #bagua>div:nth-child(3) {
+            /* border: 1px solid yellow; */
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            left: 50%;
+            margin-left: -100px;
+            background: black;
+            border-radius: 50%;
+        }
+
+        @media(max-width:500px) {
+            #bagua>div:nth-child(3) {
+                /* border: 1px solid yellow; */
+                width: 100px;
+                height: 100px;
+                margin-left: -50px;
+            }
+        }
+
+        #bagua>div:nth-child(4) {
+            /* border: 1px solid yellow; */
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            bottom: 0px;
+            left: 50%;
+            z-index: 1;
+            margin-left: -100px;
+            background: white;
+            border-radius: 50%;
+        }
+
+        @media(max-width:500px) {
+            #bagua>div:nth-child(4) {
+                /* border: 1px solid yellow; */
+                width: 100px;
+                height: 100px;
+                margin-left: -50px;
+            }
+        }
+
+        #bagua>div:nth-child(5) {
+            /* border: 1px solid yellow; */
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            top: 75px;
+            left: 50%;
+            z-index: 2;
+            margin-left: -25px;
+            background: white;
+            border-radius: 50%;
+        }
+
+        @media(max-width:500px) {
+            #bagua>div:nth-child(5) {
+                /* border: 1px solid yellow; */
+                width: 25px;
+                height: 25px;
+                top: 37.5px;
+                margin-left: -12.5px;
+            }
+        }
+
+        #bagua>div:nth-child(6) {
+            /* border: 1px solid yellow; */
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            bottom: 75px;
+            left: 50%;
+            z-index: 2;
+            margin-left: -25px;
+            background: black;
+            border-radius: 50%;
+        }
+
+        @media(max-width:500px) {
+            #bagua>div:nth-child(6) {
+                /* border: 1px solid yellow; */
+                width: 25px;
+                height: 25px;
+                bottom: 37.5px;
+                margin-left: -12.5px;
+            }
+        }
+
+        #bagua-wrapper {
+            /* border: 5px solid red; */
+            height: 100vh;
+            /*viewpoint height  可视的页高范围*/
+            display: flex;
+            /*flex布局，会将内部的元素一字排开*/
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            /*可以实现将flex布局的内部元素竖着排开，有row和column两个属性*/
+        }
+
+        #bagau-description {
+            margin: 1em;
+            /*1em表示一个字的高度，为16px*/
+        }
+    </style>
+</head>
+
+<body>
+    <!--要包裹八卦的容器，起名为 bagua-wrapper -->
+    <div id="bagua-wrapper">
+        <div id="bagua">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div id="bagau-description">
+            道可道，非常道
+        </div>
+    </div>
+</body>
+
+</html>
